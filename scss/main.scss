@@ -1,4 +1,61 @@
-.navbar{
-    color:white;
-    background-color: black;
+@import "_colors.scss", "_fonts.scss", "_themes.scss"; 
+
+body{
+    font-size: 16px;
+    font-family: "Roboto Slab", serif;
+}
+
+
+/*  HEADER */
+
+header{
+    .upper-header{
+        display: flex; 
+        justify-content: space-between;
+    }
+    .title{
+        display: flex;
+        justify-content: center;
+        margin: 0 5%;
+        .header-title{
+            font-size: 2em;
+            color: $ht_roza;
+            padding: 2em 0 1em;
+        }
+    }
+    .img-header{
+        max-height:450px;
+        img{
+            width:100%;
+        }
+    }
+
+    .navbar{
+        padding:0;
+        display:flex;
+        justify-content: space-between;
+        .nav-item{          
+            font-size:1.5em;
+            flex-grow: 1; 
+            text-align: center; 
+            &.active{
+                background-color: $crna;
+                .nav-link{
+                    color: $zuta;
+                }             
+            }
+            .nav-link{
+                padding:.7em 0;
+                font-weight: 700px;
+                color: $navbarSiva;
+                transition: all .5s ease;
+                height:100%;
+            &:hover{
+                color:$ht_roza;
+                background-color: $bijelo;
+            }
+            }
+        }
+        
+    }
 }

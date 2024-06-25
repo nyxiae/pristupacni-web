@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+@font-face {
+    font-family: 'OmoTypeExtMedium';
+    src: url('/plugins/fonts/OmoType/OmoType_Ext-Medium_One_web.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-roboto{
+    font-family: "Roboto Slab", serif;
+} 
+.font-omotype{
+    font-family: 'OmoTypeExtMedium', Helvetica, sans-serif;
+}
