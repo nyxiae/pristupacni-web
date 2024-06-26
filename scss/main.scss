@@ -1,61 +1,258 @@
-@import "_colors.scss", "_fonts.scss", "_themes.scss"; 
+@import "_colors.scss", "_fonts.scss", "_themes.scss";
 
-body{
+body {
     font-size: 16px;
     font-family: "Roboto Slab", serif;
+    transition: all .1s ease;
 }
 
 
 /*  HEADER */
 
-header{
-    .upper-header{
-        display: flex; 
+header {
+    .upper-header {
+        display: flex;
         justify-content: space-between;
+        padding: 1%;
+
+        #accessilityBtn {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 4em;
+            height: 4em;
+            background-image: url("/photo/icona_za_alatnu_traku_bijela_pozadina.webp");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid grey;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search {
+            #textInput {
+                background: url(/photo/search.png) no-repeat 4% 50%;
+                font-size: 1.2em;
+                height: 1.5em;
+                line-height: 1.2em;
+                padding: 1em 1.5em;
+                width: 10em;
+            }
+        }
+
+        .change-photo {
+            #switchId {
+                border-radius: 0;
+                width: 4em;
+                height: 2em;
+            }
+        }
+
     }
-    .title{
+
+    .title {
         display: flex;
         justify-content: center;
         margin: 0 5%;
-        .header-title{
+
+        .header-title {
             font-size: 2em;
             color: $ht_roza;
             padding: 2em 0 1em;
         }
     }
-    .img-header{
-        max-height:450px;
-        img{
-            width:100%;
+
+    .img-header {
+        max-height: 450px;
+        height: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
         }
     }
 
-    .navbar{
-        padding:0;
-        display:flex;
+    .navbar {
+        padding: 0;
+        display: flex;
         justify-content: space-between;
-        .nav-item{          
-            font-size:1.5em;
-            flex-grow: 1; 
-            text-align: center; 
-            &.active{
+
+        .nav-item {
+            font-size: 1.5em;
+            flex-grow: 1;
+            text-align: center;
+
+            &.active {
                 background-color: $crna;
-                .nav-link{
+
+                .nav-link {
                     color: $zuta;
-                }             
+                }
             }
-            .nav-link{
-                padding:.7em 0;
+
+            .nav-link {
+                padding: .7em 0;
                 font-weight: 700px;
                 color: $navbarSiva;
-                transition: all .5s ease;
-                height:100%;
-            &:hover{
-                color:$ht_roza;
-                background-color: $bijelo;
-            }
+                transition: all .1s ease;
+                height: 100%;
+
+                &:hover {
+                    color: $ht_roza;
+                    background-color: $bijelo;
+                }
             }
         }
-        
+
     }
+}
+
+.breadcrumb-title {
+    padding: 4em 0 0;
+
+    h2 {
+        font-size: 2em;
+        font-weight: bold;
+        line-height: 48px;
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    background-color: $zuta;
+    color: $navbarSiva;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    z-index: 1001;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+
+    i {
+        color: $navbarSiva;
+        font-size: 20px;
+    }
+
+    &:hover {
+        background-color: $navbarSiva;
+        color: $zuta;
+        transform: translateY(-5px);
+    }
+
+}
+
+.accessibility-container {
+    display: none;
+    position: fixed;
+    width: 200px;
+    top: 0px;
+    right: 0;
+    height: 100%;
+    z-index: 9999999;
+    background-color: $accessibilitySiva;
+    color: $bijelo;
+
+    .accessibility-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin: 5% 5%;
+
+        .font-size-settings {
+            .fs-btn {
+                padding-bottom: .55em;
+                display: flex;
+
+                button {
+                    width: 50%;
+                }
+            }
+        }
+
+        .contrast-settings {
+            .contrast-colors {
+                display: flex;
+                justify-content: space-between;
+
+                .color-circle {
+                    border-radius: 50%;
+                    border: 1px solid black;
+                    width: 30px;
+                    height: 30px;
+
+                    &.black {
+                        background-color: black;
+                    }
+
+                    &.blue {
+                        background-color: $acc-plava;
+                    }
+
+                    &.green {
+                        background-color: $acc-zelena;
+                    }
+
+                    &.red {
+                        background-color: $acc-crvena;
+                    }
+                }
+            }
+        }
+
+        p {
+            color: $bijelo;
+        }
+
+        .bottom-border {
+            padding-bottom: 0.55em;
+            margin-bottom: 0.55em;
+            border-bottom: 1px solid #444343;
+        }
+
+        button {
+            width: 100%;
+            background-color: transparent;
+            color: $bijelo;
+            padding: 2% 0;
+            border: 1px solid $bijelo;
+            transition: all .1s ease;
+
+            &:hover {
+                color: black;
+                background-color: $bijelo;
+                border: 1px solid black;
+            }
+        }
+    }
+}
+
+
+//klase za pristupačnost weba
+.dmargins {
+    width: calc(100% - 200px);
+    float: left;
+}
+
+.show {
+    display: block;
+}
+
+.greyscale {
+    filter: grayscale(100%);
+}
+
+.highlight {
+    background-color: yellow;
+    color: black;
+}
+
+.underline{
+    text-decoration: underline;
+    color:black;
 }
