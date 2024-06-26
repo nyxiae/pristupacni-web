@@ -49,4 +49,18 @@ $(document).ready(function () {
             img.attr('alt', 'slika grada, dnevna verzija');
         }
     });
+    
+    $('.js-toggle-password').on('click', function() {
+        console.log("Nee");
+        var $passwordInput = $('input[name="lozinka"]');
+        var $icon = $(this).find('i');
+
+        if ($passwordInput.attr('type') === 'password') {
+            $passwordInput.attr('type', 'text');
+            $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+            $passwordInput.attr('type', 'password');
+            $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
+    });
 })

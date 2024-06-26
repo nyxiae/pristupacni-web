@@ -1,0 +1,46 @@
+#login{
+    .full-screen{
+        height: 100vh;
+        .login-box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .title{
+                text-align: center;
+                margin-bottom: 1.5em;
+            }
+            form{
+                .form-group{
+                    margin-bottom: 1.2em;
+                    position: relative;
+                    .password-input{
+                       
+                    }
+                    .toggle{
+                        position: absolute;
+                        right: 10px;
+                        top: 8%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        padding: 0;
+                        margin: 1.1em 0; 
+                        background-color: transparent;
+                        border: none;
+                        i.fa{
+                            color: rgb(45, 45, 106); 
+                            font-size: 1.5em;
+                        } 
+                    }
+                }
+                .btn-login{
+                    background-color: rgb(45, 45, 106); 
+                    color: white; 
+                    border-radius: 0;
+                    border: none; 
+                    padding: 0.5em 1em; 
+                }
+            }
+        }
+    }
+    
+}
