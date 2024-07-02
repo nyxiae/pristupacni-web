@@ -13,7 +13,7 @@
             <button id="resetFontSize">Preporučena veličina fonta </button>
         </div>
         <div class="bottom-border">
-            <button id="font-type">OmoType Font A</button>
+            <button id="changeFont">OmoType Font <span class="letter-inside"></span></button>
         </div>
         <div class="contrast-settings bottom-border">
             <p>Kontrast</p>
@@ -40,7 +40,7 @@
             <button>Isključi svjetla</button>
         </div>
         <div class="bottom-border">
-            <button>Vrati na početne postavke</button>
+            <button id="resetStyles">Vrati na početne postavke</button>
         </div>
     </div>
 </div>

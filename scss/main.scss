@@ -213,6 +213,22 @@ header {
             padding-bottom: 0.55em;
             margin-bottom: 0.55em;
             border-bottom: 1px solid #444343;
+
+            .letter-inside {
+                position:relative;
+                &::before {
+                    display: inline-block;
+                    font-size: 14px;
+                    height: 20px;
+                    width: 20px;
+                    background-color: white;
+                    border-radius: 2px;
+                    color: black;
+                    content: "A";
+                    transition: all 250ms ease;
+                    margin-left:0.5em;
+                }
+            }
         }
 
         button {
@@ -229,30 +245,32 @@ header {
                 border: 1px solid black;
             }
         }
+
+     
     }
 }
 
 
-//klase za pristupačnost weba
-.dmargins {
-    width: calc(100% - 200px);
-    float: left;
-}
+    //klase za pristupačnost weba
+    .dmargins {
+        width: calc(100% - 200px);
+        float: left;
+    }
 
-.show {
-    display: block;
-}
+    .show {
+        display: block;
+    }
 
-.greyscale {
-    filter: grayscale(100%);
-}
+    .greyscale {
+        filter: grayscale(100%);
+    }
 
-.highlight {
-    background-color: yellow;
-    color: black;
-}
+    .highlight {
+        background-color: yellow;
+        color: black;
+    }
 
-.underline{
-    text-decoration: underline;
-    color:black;
-}
+    .underline {
+        text-decoration: underline;
+        color: black;
+    }
