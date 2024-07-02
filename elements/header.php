@@ -13,7 +13,7 @@
             <button id="resetFontSize">Preporučena veličina fonta </button>
         </div>
         <div class="bottom-border">
-            <button id="font-type">OmnoType Font A</button>
+            <button id="font-type">OmoType Font A</button>
         </div>
         <div class="contrast-settings bottom-border">
             <p>Kontrast</p>
