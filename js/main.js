@@ -29,7 +29,7 @@ $(document).ready(function () {
             accessibility.removeClass("show");
             body.removeClass("dmargins");
         } else {
-            accessibility.addClass("show");
+            accessibility.addClass("show").focus();
             body.addClass("dmargins");
         }
     })
