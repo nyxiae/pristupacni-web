@@ -3,6 +3,7 @@ require_once("Log.php");
 
 class Korisnik{
 	private $con;
+	private $log;
 
 	public function __construct($db){
 		$this->con = $db;
@@ -15,8 +16,6 @@ class Korisnik{
 		korisnicko_ime, 
 		uloga
 		from korisnik";
-
-        echo $sql;
 		
 		$result=mysqli_query($this->con,$sql);
 		return $result;	

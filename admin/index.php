@@ -21,6 +21,7 @@ $database->close($con);
 <body>
     <?php $active_menu = "pocetna";
     include("menu.php");?>
+    
 
 
 <?php include("footer.php");?>
