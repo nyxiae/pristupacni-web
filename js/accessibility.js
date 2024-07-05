@@ -80,9 +80,11 @@ $(document).ready(function () {
         if (fontFamily) {
             $('body').removeClass('font-omotype font-roboto-slab').addClass(fontFamily);
             if (fontFamily === 'font-omotype') {
-                $('#changeFont').text('Roboto Slab');
+                $('#changeFont').html('Roboto Slab <span class="letter-inside"></span>');
+                $('.letter-inside').removeClass('font-omotype').addClass('font-roboto-slab');
             } else if (fontFamily === 'font-roboto-slab') {
-                $('#changeFont').text('Omotype');
+                $('#changeFont').html('Roboto Slab <span class="letter-inside"></span>');
+                $('.letter-inside').removeClass('font-omotype').addClass('font-roboto-slab');
             }
         }
     }
@@ -146,11 +148,14 @@ $(document).ready(function () {
     $('#changeFont').on('click', function () {
         if ($('body').hasClass('font-omotype')) {
             $('body').removeClass('font-omotype').addClass('font-roboto-slab');
-            $(this).text('Omotype Font');
+            $(this).html('Omotype Font <span class="letter-inside"></span>');
+            $('.letter-inside').removeClass('font-omotype').addClass('font-roboto-slab');
+ 
             setCookie('fontFamily', 'font-roboto', 7);
         } else {
             $('body').removeClass('font-roboto-slab').addClass('font-omotype');
-            $(this).text('Roboto Slab');
+            $(this).html('Roboto Slab <span class="letter-inside"></span>');
+            $('.letter-inside').removeClass('font-omotype').addClass('font-roboto-slab');
             setCookie('fontFamily', 'font-omotype', 7);
         }
     });

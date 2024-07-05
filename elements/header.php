@@ -2,22 +2,22 @@
 <div class="accessibility-container no-change">
     <div class="accessibility-wrapper no-change">
         <div class="bottom-border">
-            <button type="button" id="close_container" accesskey="x" aria-label="Zatvori" title="Zatvori"> Zatvori  </button>
+            <button tabindex="4" type="button" id="close_container" accesskey="x" aria-label="Zatvori" title="Zatvori"> Zatvori  </button>
         </div>
         <div class="font-size-settings bottom-border">
             <p class="w-100">Veličina fonta</p>
             <div class="fs-btn">
-                <button id="decreaseFontSize">A -</button>
-                <button id="increaseFontSize">A +</button>
+                <button id="decreaseFontSize"><p class="no-change">A -</p></button>
+                <button id="increaseFontSize"><p class="no-change">A +</p></button>
             </div>
-            <button id="resetFontSize">Preporučena veličina fonta </button>
+            <button id="resetFontSize">Preporučena veličina fonta <i class="fa-solid fa-arrows-rotate"></i></button>
         </div>
         <div class="bottom-border">
             <button id="changeFont">OmoType Font <span class="letter-inside"></span></button>
         </div>
         <div class="contrast-settings bottom-border">
             <p>Kontrast</p>
-            <button>Odaberi boju</button>
+            <button>Odaberi boju <i class="fa-solid fa-eye-dropper"></i></button>
             <div class="contrast-colors pt-1">
             <div class="contrast-colors pt-1">
                 <button class="color-circle black" data-theme="black-yellow"></button>
@@ -28,19 +28,19 @@
             </div>
         </div>
         <div class="bottom-border">
-            <button id="underlineLink">Podcrtaj linkove</button>
+            <button id="underlineLink">Podcrtaj linkove <i class="fa-solid fa-underline"></i></button>
         </div>
         <div class="bottom-border">
-            <button id="highlightLink">Istakni linkove</button>
+            <button id="highlightLink">Istakni linkove <i class="fa-solid fa-arrow-rotate-left"></i></button>
         </div>
         <div class="bottom-border">
-            <button id="greyImg">Slike sivih tonova</button>
+            <button id="greyImg">Slike sivih tonova <i class="fa-solid fa-droplet-slash"></i></button>
         </div>
         <div class="bottom-border">
-            <button>Isključi svjetla</button>
+            <button>Isključi svjetla <i class="fa-regular fa-lightbulb"></i></button>
         </div>
         <div class="bottom-border">
-            <button id="resetStyles">Vrati na početne postavke</button>
+            <button id="resetStyles">Vrati na početne postavke <i class="fa-solid fa-arrow-rotate-left"></i></button>
         </div>
     </div>
 </div>
@@ -48,21 +48,21 @@
     <div class="upper-header">
         <div class="change-photo">
             <div class="form-check form-switch form-switch-xl">
-                <input class="form-check-input" type="checkbox" id="switchId">
+                <input tabindex="1" class="form-check-input" type="checkbox" id="switchId">
                 <label class="form-check-label d-none" for="switchId">Promjena fotografije</label>
             </div>
         </div>
         <div class="search">
             <div class="mb-0">
                 <label for="textInput" class="form-label d-none">Pretraga</label>
-                <input type="text" id="textInput" class="form-control" placeholder="Pretraži">
+                <input tabindex="2" type="text" id="textInput" class="form-control" placeholder="Pretraži">
             </div>
         </div>
 
         <div class="accessibility">
             <div class="mb-0">
                 <label for="accessilityBtn" class="form-label d-none">Opcije pristupačnosti</label>
-                <button type="button" id="accessilityBtn" class="form-control">
+                <button tabindex="3" type="button" id="accessilityBtn" class="form-control">
             </div>
         </div>
     </div>
