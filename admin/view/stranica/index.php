@@ -59,7 +59,7 @@ $id_korisnik = $_SESSION["id_korisnik"];
                     data: {id_stranica: data[0]},
                     dataType: "json",
                     success: function(json) {
-                        if (json.status === "fail") {
+                        if (json.message != "") {
                             sweetAlert("Neuspješni dohvat podataka. ")
                         } else {
                             $("#updateModal input[name=id_stranica]").val(json.data.id_stranica)

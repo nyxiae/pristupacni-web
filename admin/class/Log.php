@@ -11,11 +11,11 @@ class Log {
     }
 
     public function read() {
-        $sql = "SELECT l.id_log, CONCAT(k.korisnicko_ime) AS ime, l.upit, l.vrijeme
+        $sql = "SELECT l.id_log, k.korisnicko_ime, l.upit, l.vrijeme
                 FROM log l
                 JOIN korisnik k ON k.id_korisnik = l.id_korisnik
-                ORDER BY l.datum_vrijeme DESC";
-        
+                ORDER BY l.vrijeme DESC";
+
         $stmt = $this->con->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();

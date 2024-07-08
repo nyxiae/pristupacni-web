@@ -52,13 +52,14 @@
     padding: 0em 4em;
     .dropdown-item, .item{
         &.active{
+           a{
             background-color: #3e3e90;
-            padding: 1.5em 1em;
+           }
         }
         a{
             color: white;
             text-decoration: none;
-            padding: 0;
+            padding: 1.5rem 1rem;
         }
         i{
             padding-right: 1em;

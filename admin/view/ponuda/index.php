@@ -8,11 +8,19 @@ if (isset($_SESSION["id_korisnik"])) {
 
 include("../../../elements/head.php");
 include_once("../../class/Database.php");
+include_once("../../class/Kompanija.php");
 
 $id_korisnik = $_SESSION["id_korisnik"];
 
 $database = new Database();
 $con = $database->connect();
+
+$kompanija = new Kompanija($con); 
+$kompanija_opcije = array(); 
+$results = $kompanija->read_options();
+while($row = mysqli_fetch_row($results)){
+    $kompanija_opcije[] = $row;
+}
 
 $database->close($con);
 ?>
@@ -20,41 +28,75 @@ $database->close($con);
 <body>
     <?php 
     include("../../menu.php");
-    $active_menu == "kompanija";?>
+    $active_menu == "ponuda";?>
     <div class="container">
-        <h2>Employee Data</h2>
-        <table id="dataTable">
+        <div class="cms-naslov">
+            <h2>Kompanija -> Ponuda</h2>
+        </div>
+        <table id="dataTable" class="datatable">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Naziv</th>
-                    <th>E-mail</th>
-                    <th>Telefon</th>
+                    <th>Kompanija</th>
+                    <th class="minify">Uredi</th>
                 </tr>
             </thead>
         </table>
     </div>
     <script>
         $(document).ready(function() {
-            const datatable = $('#datatable').DataTable({
+            const datatable = $('#dataTable').DataTable({
                 pageLength: 100,
                 ajax: {
-                    url: '/api/kompanija/read.php',
+                    url: '/admin/api/ponuda/read.php',
                     type: 'POST',
                 },
                 aaSorting: [],
-                dom: 'fptB',
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Croatian.json' // Update to the latest DataTables version (if needed)
-                },
+                dom: 'fpt',
                 columnDefs: [
                 {
                     targets: -1,
                     orderable: false,
-                    defaultContent: "<button class='btn-update'><i class='fa fa-pencil' aria-hidden='true'></i></button>"
+                    defaultContent: "<button class='btn-update'><i class='fa fa-pencil' aria-hidden='true'></i></button><button class='btn-delete'><i class='fa fa-trash' aria-hidden='true'></i></button>"
                 }
                 ]
             });
+            $('#summernote').summernote();
+            $('#dataTable tbody').on('click', '.btn-update', function() {
+                const data = datatable.row($(this).parents('tr')).data();
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/api/kompanija/read_single.php",
+                    data: {id_kompanija: data[0]},
+                    dataType: "json",
+                    success: function(json) {
+                        if (json.message != "") {
+                            sweetAlert("Neuspješni dohvat podataka. ")
+                        } else {
+                            $("#updateModal input[name=id_kompanija]").val(json.data.id_kompanija)
+                            $("#updateModal input[name=naziv]").val(json.data.naziv)
+                            $("#updateModal input[name=email]").val(json.data.mail)
+                            $("#updateModal input[name=telefon]").val(json.data.telefon)
+
+                            $('#updateModal').modal('show');
+                        }
+                    },
+                    error: function(response) {
+                        sweetAlert("Neuspješni dohvat podataka. ")
+                    }
+                })
+            });
+            /*$('#dataTable tbody').on('click', '.btn-delete', function() {
+                const data = datatable.row($(this).parents('tr')).data();
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/api/kompanija/read_single.php",
+                    data: {id_kompanija: data[0]},
+                    dataType: "json",
+                    success: function(json) {
+
+                    }*/
         })
     </script>
 

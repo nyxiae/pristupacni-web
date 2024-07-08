@@ -74,10 +74,6 @@ class Kompanija{
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result) {
-            $this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
-        }
-
         return $result;    
     }
 }

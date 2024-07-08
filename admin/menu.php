@@ -14,6 +14,9 @@ $menu_items = array(
     'korisnik' => array(
         'narudzba'
     ),
+    'log' => array(
+        'log'
+    ),
 );
 
 // Function to check if a specific menu item group is active
@@ -39,6 +42,7 @@ function isMenuItemActive($active_menu, $group) {
             </div>
             <div class="item <?= isMenuItemActive($active_menu, 'projekt') ? "active" : "" ?>"><a href="/admin/view/projekt/index.php"><i class="fa fa-tasks" aria-hidden="true"></i> Projekti</a></div>
             <div class="item <?= isMenuItemActive($active_menu, 'korisnik') ? "active" : "" ?>"><a href="/admin/view/narudzba/index.php"><i class="fa fa-user" aria-hidden="true"></i> Korisnik</a></div>
+            <div class="item <?= isMenuItemActive($active_menu, 'log') ? "active" : "" ?>"><a href="/admin/view/log/index.php"><i class="fa fa-code" aria-hidden="true"></i> Zapisi</a></div>
             <div class="item"><a href="javascript:;" onclick="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Odjava (<?= isset($_SESSION["ime"]) && isset($_SESSION["prezime"]) ? $_SESSION["ime"].' '.$_SESSION["prezime"] : "" ?>)</a></div>
         </div>
     </div>
