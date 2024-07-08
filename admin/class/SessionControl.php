@@ -51,9 +51,6 @@ class SessionControl {
         exit();
     }
 
-    public function setSession($session_key, $value) {
-        $_SESSION[$session_key] = $value;
-    }
 }
 
 $action = $_POST['action'] ?? null;

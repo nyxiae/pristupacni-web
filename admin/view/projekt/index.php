@@ -17,6 +17,7 @@ $id_korisnik = $_SESSION["id_korisnik"];
     $active_menu = "projekt";
     include("../../menu.php");
     include("update.php");
+    include("create.php");
     ?>
     <div class="container">
         <div class="cms-naslov">

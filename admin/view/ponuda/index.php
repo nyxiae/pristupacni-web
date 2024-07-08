@@ -28,7 +28,10 @@ $database->close($con);
 <body>
     <?php 
     include("../../menu.php");
-    $active_menu == "ponuda";?>
+    $active_menu == "ponuda";
+    include("update.php");
+    include("create.php");
+    ?>
     <div class="container">
         <div class="cms-naslov">
             <h2>Kompanija -> Ponuda</h2>

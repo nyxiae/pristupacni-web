@@ -14,7 +14,8 @@ class Korisnik{
 
 		$sql = "SELECT id_korisnik, 
 		korisnicko_ime, 
-		uloga
+		uloga,
+		datum_vrijeme_zadnja_prijava
 		from korisnik";
 		
 		$result=mysqli_query($this->con,$sql);
@@ -23,12 +24,6 @@ class Korisnik{
 
 	public function read_single($data){
 		$sql = "SELECT * from korisnik where id_korisnik = '{$data["id_korisnik"]}'";
-		$result=mysqli_query($this->con,$sql);
-		return $result;	
-	}
-	
-	public function read_korisnik($data){
-		$sql = "SELECT korisnicko_ime, lozinka from korisnik where id_korisnik = '{$data["id_korisnik"]"; 
 		$result=mysqli_query($this->con,$sql);
 		return $result;	
 	}
@@ -64,7 +59,7 @@ class Korisnik{
 		$row = mysqli_fetch_row($result);
 		if(!$row[0]){
 			$sql = "UPDATE korisnik set 
-			korisnicko_ime = '{$data["korisnicko_ime"]}'" 
+			korisnicko_ime = '{$data["korisnicko_ime"]}'"; 
 			if($data["lozinka"]!==null){
 				$sql.=",lozinka = '{$data["lozinka"]}'";
 			}else{
@@ -84,7 +79,6 @@ class Korisnik{
 		FROM korisnik";
 
 		$result=mysqli_query($this->con,$sql);
-		$this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
 		return $result;	
 
 	}
