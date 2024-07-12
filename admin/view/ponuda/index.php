@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION["id_korisnik"])) {
     //
 } else {
-    header("Location: login.php");
+    header("Location: /admin/login.php");
 }
 
 include("../../../elements/head.php");
