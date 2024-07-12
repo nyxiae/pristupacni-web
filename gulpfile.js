@@ -30,6 +30,14 @@ gulp.task('js', function() {
     .pipe(gulp.dest('js')); // Destination path for minified JavaScript
 });
 
+// Minify JavaScript
+gulp.task('js', function() {
+  return gulp.src('js/admin.js') // Source path for JavaScript file
+    .pipe(uglify())
+    .pipe(rename({ suffix: '-min' })) // Rename to main-min.js
+    .pipe(gulp.dest('js')); // Destination path for minified JavaScript
+});
+
 // Watch for changes
 gulp.task('watch', function() {
   gulp.watch('scss//*.scss', gulp.series('scss'));

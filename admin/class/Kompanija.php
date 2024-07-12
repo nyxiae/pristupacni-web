@@ -45,9 +45,11 @@ class Kompanija{
         $stmt = $this->con->prepare($sql);
         $stmt->bind_param("ssss", $data["naziv"], $data["mail"], $data["telefon"], $data["tekst"]);
         $result = $stmt->execute();
+        
+        $logSql = "INSERT INTO kompanija (naziv, mail, telefon, tekst) VALUES ('{$data["naziv"]}', '{$data["mail"]}', '{$data["telefon"]}', '{$data["tekst"]}')";
 
         if ($result) {
-            $this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
+            $this->log->create($logSql, basename(__FILE__, ".php") . " " . __FUNCTION__);
         }
 
         return $result;    
@@ -60,8 +62,10 @@ class Kompanija{
         $stmt->bind_param("ssssi", $data["naziv"], $data["mail"], $data["telefon"], $data["tekst"], $data["id_kompanija"]);
         $result = $stmt->execute();
 
+        $logSql = "UPDATE kompanija SET naziv = '{$data["naziv"]}', mail = '{$data["mail"]}', telefon = '{$data["telefon"]}', tekst = '{$data["tekst"]}' WHERE id_kompanija = '{$data["id_kompanija"]}'";
+
         if ($result) {
-            $this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
+            $this->log->create($logSql, basename(__FILE__, ".php") . " " . __FUNCTION__);
         }
 
         return $result;    

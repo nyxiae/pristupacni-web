@@ -6,10 +6,11 @@ $db = new Database();
 $con = $db->connect();
 $stranica = new Stranica($con); 
 
-$result = $stranica->create($_POST);
+$data = json_decode(file_get_contents('php://input'), true);
 
-if ($result->num_rows > 0) {
-    $row = mysqli_fetch_row($result)
+$result = $stranica->create($data);
+
+if ($result) {
     print json_encode(array('message' => 'Stranica je kreirana.'));
 } else {
     print json_encode(array('message' => 'Dodavanje nije uspjelo.'));

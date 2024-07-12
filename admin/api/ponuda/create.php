@@ -6,13 +6,14 @@ $db = new Database();
 $con = $db->connect();
 $ponuda = new Ponuda($con); 
 
-$result = $ponuda->create($_POST);
+$data = json_decode(file_get_contents('php://input'), true);
 
-if ($result->num_rows > 0) {
-    $row = mysqli_fetch_row($result)
-    print json_encode(array('message' => 'Ponuda je kreirana.'));
+$result = $ponuda->create($data);
+
+if ($result) {
+    print json_encode(array('message' => 'Dodavanje uspješno.', 'icon'=>'success'));
 } else {
-    print json_encode(array('message' => 'Dodavanje nije uspjelo.'));
+    print json_encode(array('message' => 'Dodavanje nije uspjelo.', 'icon'=>'error'));
 }
 $db->close($con);
 exit;

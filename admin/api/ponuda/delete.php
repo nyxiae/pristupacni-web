@@ -6,14 +6,14 @@ $db = new Database();
 $con = $db->connect();
 $ponuda = new Ponuda($con); 
 
-$id = mysqli_real_escape_string($_POST["id_ponuda"]);
+$id = $_POST["id_ponuda"];
 
 $result = $ponuda->delete($id);
 
-if ($result->num_rows > 0) {
-    print json_encode(array("message"=>"Brisanje je uspješno."));
+if ($result) {
+    print json_encode(array("message"=>"Brisanje je uspješno.", 'icon'=>'success'));
 } else {
-    print json_encode(array('message' => 'Dodavanje nije uspjelo.'));
+    print json_encode(array('message' => 'Dodavanje nije uspjelo.', 'icon'=>'error'));
 }
 $db->close($con);
 exit;

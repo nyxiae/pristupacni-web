@@ -29,7 +29,7 @@ $database->close($con);
     <?php 
     include("../../menu.php");
     $active_menu == "log";?>
-    <div class="container">
+    <div class="cms-container">
         <div class="cms-naslov">
             <h2>Zapisi</h2>
         </div>

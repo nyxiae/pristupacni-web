@@ -6,12 +6,14 @@ $db = new Database();
 $con = $db->connect();
 $ponuda = new Ponuda($con); 
 
-$result = $ponuda->update($_POST);
+$data = json_decode(file_get_contents('php://input'), true);
 
-if ($result->num_rows > 0) {
-    print json_encode(array('message' => 'Izmjena uspješna.'));
+$result = $ponuda->update($data);
+
+if ($result) {
+    print json_encode(array('message' => 'Ažuriranje uspješno.', 'icon'=>'success'));
 } else {
-    print json_encode(array('message' => 'Nema pronađenih rezultata.'));
+    print json_encode(array('message' => 'Ažuriranje nije uspjelo.', 'icon'=>'error'));
 }
 $db->close($con);
 exit;

@@ -56,6 +56,23 @@ class Stranica{
         return $result;    
     }
 
+     
+    public function delete($id) {
+        $sql = "UPDATE projekti SET aktivan = 0 WHERE id_projekt = ?";
+
+        $stmt = $this->con->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $result = $stmt->execute();
+        
+        $logSql = "UPDATE projekti SET aktivan = 0 WHERE id_projekt = $id";
+
+        if ($result) {
+            $this->log->create($logSql, basename(__FILE__, ".php") . " " . __FUNCTION__);
+        }
+        
+        return $result;
+    }
+
     public function update($data){
         $sql = "UPDATE stranica SET naziv = ?, tekst = ? WHERE id_stranica = ?";
         
@@ -66,6 +83,15 @@ class Stranica{
         if ($result) {
             $this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
         }
+
+        return $result;    
+    }
+    public function read_options(){
+        $sql = "SELECT id_stranica, naziv FROM stranica";
+        
+        $stmt = $this->con->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         return $result;    
     }

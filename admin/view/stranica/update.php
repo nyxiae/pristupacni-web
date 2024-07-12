@@ -36,7 +36,7 @@
 
             // Perform AJAX request to update the data
             $.ajax({
-                url: '/admin/api/kompanija/update.php', // Adjust the URL to your update endpoint
+                url: '/admin/api/stranica/update.php', // Adjust the URL to your update endpoint
                 type: 'POST',
                 data: JSON.stringify(updatedData),
                 contentType: 'application/json; charset=utf-8',

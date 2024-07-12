@@ -6,9 +6,11 @@ $db = new Database();
 $con = $db->connect();
 $stranica = new Stranica($con); 
 
-$result = $stranica->update($_POST);
+$data = json_decode(file_get_contents('php://input'), true);
 
-if ($result->num_rows > 0) {
+$result = $stranica->update($data);
+
+if ($result) {
     print json_encode(array('message' => 'Izmjena uspješna.'));
 } else {
     print json_encode(array('message' => 'Nema pronađenih rezultata.'));

@@ -19,9 +19,12 @@ $id_korisnik = $_SESSION["id_korisnik"];
     include("update.php");
     include("create.php");
     ?>
-    <div class="container">
+    <div class="cms-container">
         <div class="cms-naslov">
             <h2>Stranice</h2>
+        </div>
+        <div class="mt-3">
+            <button class="btn-create">NOVI UNOS</button>
         </div>
         <table id="dataTable" class="datatable">
             <thead>
@@ -51,7 +54,7 @@ $id_korisnik = $_SESSION["id_korisnik"];
                 }
                 ]
             });
-            $('#summernote').summernote();
+
             $('#dataTable tbody').on('click', '.btn-update', function() {
                 const data = datatable.row($(this).parents('tr')).data();
                 $.ajax({
@@ -75,6 +78,9 @@ $id_korisnik = $_SESSION["id_korisnik"];
                         sweetAlert("Neuspješni dohvat podataka. ")
                     }
                 })
+            });
+            $(".btn-create").on('click', function() {
+                $("#createModal").modal('show');
             });
         })
     </script>
