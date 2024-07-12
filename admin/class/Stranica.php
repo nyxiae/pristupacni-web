@@ -56,15 +56,15 @@ class Stranica{
         return $result;    
     }
 
-     
+ 
     public function delete($id) {
-        $sql = "UPDATE projekti SET aktivan = 0 WHERE id_projekt = ?";
+        $sql = "UPDATE stranica SET aktivan = 0 WHERE id_stranica = ?";
 
         $stmt = $this->con->prepare($sql);
         $stmt->bind_param("i", $id);
         $result = $stmt->execute();
         
-        $logSql = "UPDATE projekti SET aktivan = 0 WHERE id_projekt = $id";
+        $logSql = "UPDATE stranica SET aktivan = 0 WHERE id_stranica = $id";
 
         if ($result) {
             $this->log->create($logSql, basename(__FILE__, ".php") . " " . __FUNCTION__);
@@ -77,7 +77,7 @@ class Stranica{
         $sql = "UPDATE stranica SET naziv = ?, tekst = ? WHERE id_stranica = ?";
         
         $stmt = $this->con->prepare($sql);
-        $stmt->bind_param("ssssi", $data["naziv"], $data["tekst"], $data["id_stranica"]);
+        $stmt->bind_param("ssi", $data["naziv"], $data["tekst"], $data["id_stranica"]);
         $result = $stmt->execute();
 
         if ($result) {
@@ -86,6 +86,7 @@ class Stranica{
 
         return $result;    
     }
+    
     public function read_options(){
         $sql = "SELECT id_stranica, naziv FROM stranica";
         

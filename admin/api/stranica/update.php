@@ -11,9 +11,9 @@ $data = json_decode(file_get_contents('php://input'), true);
 $result = $stranica->update($data);
 
 if ($result) {
-    print json_encode(array('message' => 'Izmjena uspješna.'));
+    print json_encode(array('message' => 'Izmjena uspješna.', 'icon'=>'success'));
 } else {
-    print json_encode(array('message' => 'Nema pronađenih rezultata.'));
+    print json_encode(array('message' => 'Nema pronađenih rezultata.', 'icon'=>'error'));
 }
 $db->close($con);
 exit;
