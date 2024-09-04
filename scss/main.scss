@@ -1,5 +1,9 @@
 @import "_colors.scss", "_fonts.scss", "_themes.scss", "_admin.scss";
 
+$breakpoint-tablet: 1080px;
+$breakpoint-phone: 480px;
+
+
 body {
     font-size: 16px;
     font-family: "Roboto Slab", serif;
@@ -307,3 +311,46 @@ header {
             transition: all 250ms ease;
         }
     }
+
+    // SADRŽAJ STRANICE
+
+    .str-box{
+        padding: 4em 2em;
+        .naslov {
+            padding-bottom: 1em;
+        }
+        .box{
+            border: 2px solid #8080804d;
+            box-shadow: 1px 2px 4px #8080804d;
+            padding: 4em 4em;
+            .kompanija{
+                color: $ht_roza;
+                margin-bottom: 1em;
+            }
+            .naziv-ponude{
+                margin-bottom: 1em;
+            }
+            .ponuda{
+                margin-bottom: 2em;
+            }
+
+        }
+    }
+
+@media (max-width: $breakpoint-tablet) {  
+
+}  
+
+@media (max-width: $breakpoint-phone) {
+    .str-box{
+        padding: 4em 2em;
+        .naslov {
+            padding-bottom: 1em;
+        }
+        .box{
+            border: 2px solid #8080804d;
+            box-shadow: 1px 2px 4px #8080804d;
+            padding: 2em 2em;
+        }
+    }
+}

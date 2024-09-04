@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     // VARIJABLE 
+    var currentPath = window.location.pathname.replace(/\/+$/, '');
     let accessibility = $(".accessibility-container");
     let backToTopButton = $('#js-back-to-top');
     let body = $("body");
@@ -61,6 +62,14 @@ $(document).ready(function () {
         } else {
             $passwordInput.attr('type', 'password');
             $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
+    });
+
+    $('.nav-link').each(function () {
+        if ($(this).attr('href') === currentPath) {
+            $(this).parent().addClass('active');
+        } else {
+            $(this).parent().removeClass('active');
         }
     });
 

@@ -23,9 +23,12 @@ class Ponuda{
         return $result;    
     }
 
-    public function read_frontend(){
-        $sql = "SELECT id_ponuda, id_kompanija, id_stanica, naslov, tekst 
-                FROM ponuda WHERE aktivan = 1";
+    public function read_frontend($id_str){
+
+        $sql = "SELECT p.id_ponuda, k.naziv, p.naslov, p.tekst 
+                FROM ponuda  p 
+                JOIN kompanija k on p.id_kompanija = k.id_kompanija 
+                WHERE p.aktivan = 1 AND p.id_stranica = $id_str";
         
         $stmt = $this->con->prepare($sql);
         $stmt->execute();

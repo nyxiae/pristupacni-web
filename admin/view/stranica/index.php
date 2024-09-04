@@ -87,7 +87,7 @@ $id_korisnik = $_SESSION["id_korisnik"];
             });
             $('#saveUpdate').on('click', function() {
                 const updatedData = {
-                    id_stranica: $('#updateStranica').val(),
+                    id_stranica: $('#updateID').val(),
                     naziv: $('#updateNaziv').val(),
                     tekst: $('#summernoteUpdate').val()
                 };

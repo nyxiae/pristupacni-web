@@ -77,29 +77,37 @@
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">      
-        <ul class="navbar-nav w-100 d-flex justify-content-around">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Početna</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Usluge</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">O nama</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Kontakt</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Kontakt</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Kontakt</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Kontakt</a>
-            </li>
+        <div class="navbar-nav w-100 d-flex justify-content-around">
+            <div class="nav-item">
+                <a class="nav-link" href="/">Početna</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="/novosti">Novosti</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="/mladi">Mladi</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="/osi">OSI</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="/seniori">Seniori</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="/kontakti">Kontakti</a>
+            </div>
+
+            <div class="nav-item dropdown">
+            <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                Projekti
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a class="dropdown-anchor" href="/admin/view/kompanija/index.php">Kompanija</a></li>
+                <li class="dropdown-item"><a class="dropdown-anchor" href="/admin/view/ponuda/index.php">Ponuda</a></li> 
+            </ul>
+        </div>
         </ul>
+        
     </nav>
 </header>
 

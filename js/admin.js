@@ -12,10 +12,10 @@ $(function() {
     $(".btn-create").on('click', function() {
         $("#createModal").modal('show');
     });
-    $('#createModal .close').on('click', function() {
+    $('#createModal .close-modal').on('click', function() {
         $('#createModal').modal('hide');
     });
-    $('#updateModal .close').on('click', function() {
+    $('#updateModal .close-modal').on('click', function() {
         $('#updateModal').modal('hide');
     });
 

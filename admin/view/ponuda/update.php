@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="updateModalLabel">Uređivanje</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close-modal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -13,8 +13,8 @@
                         <input type="hidden" class="form-control" id="updateID" name="id_ponuda" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="updateNaslov">Naslov</label>
-                        <input type="text" class="form-control" id="updateNaslov" name="naslov">
+                        <label for="updateNaziv">Naslov</label>
+                        <input type="text" class="form-control" id="updateNaziv" name="naslov">
                     </div>
                     <div class="d-flex">
                         <div class="form-group w-50 pe-1">

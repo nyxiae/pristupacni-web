@@ -23,8 +23,8 @@ class Projekt{
     }
 
     public function read_frontend(){
-        $sql = "SELECT id_projekt, id_stanica, naziv, tekst 
-                FROM projekti WHERE aktivan = ?";
+        $sql = "SELECT id_projekt, naziv, tekst 
+                FROM projekti WHERE aktivan = ? AND id_stanica = ";
         
         $aktivan = 1; 
         $stmt = $this->con->prepare($sql);
@@ -63,11 +63,13 @@ class Projekt{
         $sql = "UPDATE projekti SET id_stranica = ?, naziv = ?, tekst = ? WHERE id_projekt = ?";
         
         $stmt = $this->con->prepare($sql);
-        $stmt->bind_param("sssi", $data["id_stranica"], $data["naziv"], $data["tekst"], $data["id_projekt"],);
+        $stmt->bind_param("issi", $data["id_stranica"], $data["naziv"], $data["tekst"], $data["id_projekt"]);
         $result = $stmt->execute();
 
+        $logSql = "UPDATE projekti SET id_stranica = '{$data["id_stranica"]}', naziv = '{$data["naziv"]}', tekst = '{$data["tekst"]}' WHERE id_projekt = '{$data["id_projekt"]}'";
+
         if ($result) {
-            $this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
+            $this->log->create($logSql, basename(__FILE__, ".php") . " " . __FUNCTION__);
         }
 
         return $result;    

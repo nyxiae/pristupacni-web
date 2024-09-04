@@ -22,17 +22,6 @@ class Stranica{
         return $result;    
     }
 
-    public function read_frontend(){
-        $sql = "SELECT id_stranica, tekst
-                FROM stranica WHERE aktivan = ?";
-        
-        $stmt = $this->con->prepare($sql);
-        $stmt->bind_param("i", 1);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result;    
-    }
-
     public function read_single($id){
         $sql = "SELECT * FROM stranica WHERE id_stranica = ?";
         $stmt = $this->con->prepare($sql);
@@ -49,8 +38,10 @@ class Stranica{
         $stmt->bind_param("ss", $data["naziv"], $data["tekst"]);
         $result = $stmt->execute();
 
+        $logSql = "INSERT INTO stranica (naziv, tekst) VALUES ('{$data["naziv"]}', '{$data["tekst"]}')";
+
         if ($result) {
-            $this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
+            $this->log->create($logSql, basename(__FILE__, ".php") . " " . __FUNCTION__);
         }
 
         return $result;    
@@ -80,9 +71,13 @@ class Stranica{
         $stmt->bind_param("ssi", $data["naziv"], $data["tekst"], $data["id_stranica"]);
         $result = $stmt->execute();
 
+        $logSql = "UPDATE stranica SET naziv = '{$data["naziv"]}', tekst = '{$data["tekst"]}' WHERE id_stranica = '{$data["id_stranica"]}'";
+
         if ($result) {
-            $this->log->create($sql, basename(__FILE__, ".php") . " " . __FUNCTION__);
+            $this->log->create($logSql, basename(__FILE__, ".php") . " " . __FUNCTION__);
         }
+
+        file_put_contents('sql_log.txt', $logSql);
 
         return $result;    
     }

@@ -1,0 +1,1 @@
+UPDATE stranica SET naziv = 'OSI', tekst = '<br>' WHERE id_stranica = '4'

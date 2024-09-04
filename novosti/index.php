@@ -1,7 +1,7 @@
 <?php
-include ("admin/class/Database.php"); 
-include ("admin/class/Stranica.php"); 
-include ("admin/class/Projekt.php"); 
+include ("../admin/class/Database.php"); 
+include ("../admin/class/Stranica.php"); 
+include ("../admin/class/Projekt.php"); 
 
 $database = new Database();
 $con = $database->connect();
@@ -15,15 +15,15 @@ while($row = mysqli_fetch_assoc($result)){
 
 ?>
 
-<?php include("elements/head.php"); ?>
+<?php include("../elements/head.php"); ?>
 <!-- Navigation -->
-<?php include("elements/header.php"); ?>
+<?php include("../elements/header.php"); ?>
 
 
     <div class="container str-box">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="naslov">Početna</h2>
+                <h2 class="naslov">Novosti</h2>
                 <div class="box">
                     <?=$data["tekst"]?>
                 </div>
@@ -32,4 +32,4 @@ while($row = mysqli_fetch_assoc($result)){
     </div>
 
     <!-- Footer -->
-<?php include("elements/footer.php"); ?>
+<?php include("../elements/footer.php"); ?>
