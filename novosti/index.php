@@ -13,6 +13,13 @@ while($row = mysqli_fetch_assoc($result)){
     $data = $row;
 }
 
+$projekt = new Projekt($con); 
+$projekti_data = array(); 
+$result = $projekt->read_frontend(); 
+while($row = mysqli_fetch_assoc($result)){
+    $projekti_data[] = $row;
+}
+
 ?>
 
 <?php include("../elements/head.php"); ?>

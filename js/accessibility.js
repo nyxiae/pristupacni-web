@@ -27,6 +27,9 @@ function eraseCookie(name) {
 }
 
 $(document).ready(function () {
+
+    var instance = new Mark(document.body);
+    
     // Početne veličine fonta
     var initialFontSizes = {
         'p': '16px',
@@ -204,4 +207,21 @@ $(document).ready(function () {
         eraseCookie('highlightLink'); // Uklanjanje spremljenog stanja isticanja linkova iz kolačića
         eraseCookie('underlineLink'); // Uklanjanje spremljenog stanja podcrtavanja linkova iz kolačića
     });
+
+
+    $('#textInput').on('input', function() {
+        var query = $(this).val().toLowerCase();
+
+        // Unmark previous highlights
+        instance.unmark();
+
+        if (query.length > 0) {
+            // Mark new highlights
+            instance.mark(query, {
+                element: 'span',
+                className: 'highlight'
+            });
+        }
+    });
+    
 });

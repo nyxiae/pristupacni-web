@@ -1,7 +1,7 @@
-@import "_colors.scss", "_fonts.scss", "_themes.scss", "_admin.scss";
-
 $breakpoint-tablet: 1080px;
 $breakpoint-phone: 480px;
+
+@import "_colors.scss", "_fonts.scss", "_themes.scss", "_admin.scss";
 
 
 body {
@@ -120,6 +120,30 @@ header {
                 }
             }
         }
+        .dropdown-menu{
+            border: none;
+            background: #f8f9fa !important;
+            padding: 0; 
+            .dropdown-item{
+                padding: 1em;
+                a {
+                    color: rgb(56, 56, 56);
+                    text-decoration: none;
+                    font-size: 20px;
+                    min-width: 100%;
+                    display: block;
+                    &:hover{
+                        background-color: #fff;
+                        color: $ht_roza;
+                    }
+                }
+                &:hover{
+                    background-color: #fff;
+                    color: $ht_roza;
+                }
+            } 
+            
+        }
 
     }
 }
@@ -179,6 +203,12 @@ header {
         display: flex;
         flex-direction: column;
         margin: 5% 5%;
+
+        .button-active {
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc; 
+        }
 
         .font-size-settings {
             .fs-btn {

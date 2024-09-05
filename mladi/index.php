@@ -2,6 +2,7 @@
 include ("../admin/class/Database.php"); 
 include ("../admin/class/Stranica.php"); 
 include ("../admin/class/Ponuda.php"); 
+include ("../admin/class/Projekt.php"); 
 
 $database = new Database();
 $con = $database->connect();
@@ -18,6 +19,13 @@ $data_ponude = array();
 $result = $ponuda->read_frontend(3); 
 while($row = mysqli_fetch_assoc($result)){
     $data_ponude[] = $row;
+}
+
+$projekt = new Projekt($con); 
+$projekti_data = array(); 
+$result = $projekt->read_frontend(); 
+while($row = mysqli_fetch_assoc($result)){
+    $projekti_data[] = $row;
 }
 
 $grupirane_ponude = [];

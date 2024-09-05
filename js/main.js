@@ -73,4 +73,29 @@ $(document).ready(function () {
         }
     });
 
+    function toggleButtonState(button) {
+        button.classList.toggle('button-active');
+    }
+
+    // Select the buttons by their IDs or accurate selectors
+    const buttons = {
+        omoTypeFont: document.getElementById('changeFont'),
+        highlightLinks: document.getElementById('highlightLink'),
+        greyImages: document.getElementById('greyImg'),
+        turnOffLights: document.querySelector('button[title="Isključi svjetla"]') // Ensuring the right button is selected
+    };
+
+    // Check if buttons are found and add event listeners
+    if (buttons.omoTypeFont) {
+        buttons.omoTypeFont.addEventListener('click', () => toggleButtonState(buttons.omoTypeFont));
+    }
+    if (buttons.highlightLinks) {
+        buttons.highlightLinks.addEventListener('click', () => toggleButtonState(buttons.highlightLinks));
+    }
+    if (buttons.greyImages) {
+        buttons.greyImages.addEventListener('click', () => toggleButtonState(buttons.greyImages));
+    }
+    if (buttons.turnOffLights) {
+        buttons.turnOffLights.addEventListener('click', () => toggleButtonState(buttons.turnOffLights));
+    }
 })

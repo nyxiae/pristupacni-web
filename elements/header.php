@@ -102,8 +102,10 @@
                 Projekti
             </a>
             <ul class="dropdown-menu">
-                <li class="dropdown-item"><a class="dropdown-anchor" href="/admin/view/kompanija/index.php">Kompanija</a></li>
-                <li class="dropdown-item"><a class="dropdown-anchor" href="/admin/view/ponuda/index.php">Ponuda</a></li> 
+                <?php if(isset($projekti_data)){
+                    foreach($projekti_data as $data){ ?>
+                        <li class="dropdown-item"><a class="dropdown-anchor" href="/projekt/index.php?id=<?=$data['id_projekt']?>"><?=$data['naziv']?></a></li>
+                <?php } }?>
             </ul>
         </div>
         </ul>

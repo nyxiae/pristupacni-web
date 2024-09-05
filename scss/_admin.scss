@@ -182,12 +182,14 @@
             border: none;
             padding: .5em 1em;
             margin-right: 1em;
+            width: 46px;
         }
         .btn-delete{
             background-color: #801c1c;
             color: white; 
             border: none;
             padding: .5em 1em;
+            width: 46px;
         }
     }
 }
@@ -198,7 +200,7 @@
     width: 90%;
     .modal-dialog {
         max-width: 80%;
-        .close {
+        .close-modal {
             background-color: white;
             border: none;
             span{
@@ -218,5 +220,17 @@
             padding: .5em .5em;
             margin-top: 1.5em;
         }
+    }
+}
+
+@media (max-width: $breakpoint-tablet) {  
+    .btn-update{
+        margin-bottom: 1em;
+    }
+}  
+
+@media (max-width: $breakpoint-phone) {
+    .btn-update{
+        margin-bottom: 1em;
     }
 }

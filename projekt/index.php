@@ -1,8 +1,15 @@
 <?php
 include ("../admin/class/Database.php"); 
 include ("../admin/class/Stranica.php"); 
-include ("../admin/class/Ponuda.php"); 
 include ("../admin/class/Projekt.php"); 
+
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
+    header('Location: ../index.php');
+    exit();
+}
 
 $database = new Database();
 $con = $database->connect();
@@ -21,11 +28,10 @@ while($row = mysqli_fetch_assoc($result)){
     $projekti_data[] = $row;
 }
 
-$ponuda = new Ponuda($con); 
-$data_ponude = array(); 
-$result = $ponuda->read_frontend(5); 
+$projekt_pod = array(); 
+$result = $projekt->read_single($id); 
 while($row = mysqli_fetch_assoc($result)){
-    $data_ponude[] = $row;
+    $projekt_pod = $row;
 }
 
 ?>
@@ -34,24 +40,15 @@ while($row = mysqli_fetch_assoc($result)){
 <!-- Navigation -->
 <?php include("../elements/header.php"); ?>
 
-
     <div class="container str-box">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="naslov">Seniori</h2>
-                <?php if($data["tekst"] != ''){ ?>
+            <?php if (!empty($projekt_pod)) {  ?>
+                <h2 class="naslov"><?=$projekt_pod["naziv"]?></h2>
                     <div class="box">
-                        <?=$data["tekst"]?>
+                        <?=$projekt_pod["tekst"]?>
                     </div>
                 <?php } ?>
-                <?php if (!empty($data_ponude )) { 
-                    foreach($data_ponude as $pon){ ?>
-                    <div class="box mb-5">
-                        <h2 class="kompanija"><?=$pon["naziv"]?></h2>
-                        <h3 class="naziv-ponude"><?=$pon["naslov"]?></h3>
-                        <?=$pon["tekst"]?>
-                    </div>
-                <?php } } ?>
             </div>
         </div>
     </div>

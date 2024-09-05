@@ -24,7 +24,7 @@ class Projekt{
 
     public function read_frontend(){
         $sql = "SELECT id_projekt, naziv, tekst 
-                FROM projekti WHERE aktivan = ? AND id_stanica = ";
+                FROM projekti WHERE aktivan = ?";
         
         $aktivan = 1; 
         $stmt = $this->con->prepare($sql);
