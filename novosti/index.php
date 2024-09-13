@@ -2,6 +2,7 @@
 include ("../admin/class/Database.php"); 
 include ("../admin/class/Stranica.php"); 
 include ("../admin/class/Projekt.php"); 
+include ("../admin/class/Novost.php"); 
 
 $database = new Database();
 $con = $database->connect();
@@ -20,6 +21,15 @@ while($row = mysqli_fetch_assoc($result)){
     $projekti_data[] = $row;
 }
 
+$novost = new Novost($con); 
+$novosti_data = array(); 
+$result = $novost->read_frontend(); 
+while($row = mysqli_fetch_assoc($result)){
+    $novosti_data[] = $row;
+}
+
+$database->close($con);
+
 ?>
 
 <?php include("../elements/head.php"); ?>
@@ -34,9 +44,11 @@ while($row = mysqli_fetch_assoc($result)){
         <div class="row">
             <div class="col-md-12">
                 <h2 class="naslov">Novosti</h2>
+                <?php foreach($novosti_data as $nov){ ?>
                 <div class="box">
-                    <div class="fb-page" data-href="https://www.facebook.com/ictaac/?locale=hr_HR" data-tabs="timeline" data-width="500" data-height="800" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ictaac/?locale=hr_HR" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ictaac/?locale=hr_HR">ICT-AAC</a></blockquote></div>
+                    <div class="fb"><?=$nov["embed"]?></div>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </div>

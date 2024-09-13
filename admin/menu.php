@@ -4,6 +4,7 @@ $active_menu = isset($active_menu) ? $active_menu : "";
 $menu_items = array(
     'stranica' => array('stranica'),
     'kompanija' => array('kompanija', 'ponuda'),
+    'novost' => array('novost'),
     'projekt' => array('projekt'),
     'korisnik' => array('korisnik'),
     'log' => array('log')
@@ -37,6 +38,7 @@ function isMenuItemActive($active_menu, $group) {
             </ul>
         </div>
     </div>
+    <div class="item <?= isMenuItemActive($active_menu, 'novost') ? "active" : "" ?>"><a href="/admin/view/novost/index.php"><i class="fa fa-star" aria-hidden="true"></i> Novosti</a></div>
     <div class="item <?= isMenuItemActive($active_menu, 'projekt') ? "active" : "" ?>"><a href="/admin/view/projekt/index.php"><i class="fa fa-tasks" aria-hidden="true"></i> Projekti</a></div>
     <div class="item <?= isMenuItemActive($active_menu, 'korisnik') ? "active" : "" ?>"><a href="/admin/view/korisnik/index.php"><i class="fa fa-user" aria-hidden="true"></i> Korisnik</a></div>
     <div class="item <?= isMenuItemActive($active_menu, 'log') ? "active" : "" ?>"><a href="/admin/view/log/index.php"><i class="fa fa-code" aria-hidden="true"></i> Zapisi</a></div>
