@@ -1,5 +1,6 @@
 RewriteEngine On
 RewriteBase /
 
+RewriteRule ^projekt/([0-9]+)(/(.*))?$  projekt/index.php?id=$1 [NC]
 
 ErrorDocument 404 /404.php

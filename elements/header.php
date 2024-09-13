@@ -103,8 +103,19 @@
             </a>
             <ul class="dropdown-menu">
                 <?php if(isset($projekti_data)){
-                    foreach($projekti_data as $data){ ?>
-                        <li class="dropdown-item"><a class="dropdown-anchor" href="/projekt/index.php?id=<?=$data['id_projekt']?>"><?=$data['naziv']?></a></li>
+                    foreach($projekti_data as $data){  
+                        $naslov = $data['naziv'];
+                        $search = array('č', 'ć', 'š', 'Č', 'Ć', 'Š');
+                        $replace = array('c', 'c', 's', 'C', 'C', 'S');
+                        $naslov = str_replace($search, $replace, $naslov);
+                    	$naslov = preg_replace('/[^a-zA-Z0-9 ]/', '', $naslov);
+                        $naslov = str_replace(' ', '-', $naslov);
+                        $naslov = strtolower($naslov);
+                        /*$naslov = preg_replace('/[^a-zA-Z0-9 ]/', '', $data['naziv']);
+                        $naslov = str_replace(' ', '-', $naslov);
+                        $naslov = strtolower($naslov);*/
+                        $url="/projekt/".$data['id_projekt']."/".urlencode($naslov);?>
+                        <li class="dropdown-item"><a class="dropdown-anchor" href="<?=$url?>"><?=$data['naziv']?></a></li>
                 <?php } }?>
             </ul>
         </div>

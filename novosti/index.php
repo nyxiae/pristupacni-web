@@ -26,13 +26,16 @@ while($row = mysqli_fetch_assoc($result)){
 <!-- Navigation -->
 <?php include("../elements/header.php"); ?>
 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/hr_HR/sdk.js#xfbml=1&version=v20.0&appId=740446049969191" nonce="tiKcGCeE"></script>
+
 
     <div class="container str-box">
         <div class="row">
             <div class="col-md-12">
                 <h2 class="naslov">Novosti</h2>
                 <div class="box">
-                    <?=$data["tekst"]?>
+                    <div class="fb-page" data-href="https://www.facebook.com/ictaac/?locale=hr_HR" data-tabs="timeline" data-width="500" data-height="800" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ictaac/?locale=hr_HR" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ictaac/?locale=hr_HR">ICT-AAC</a></blockquote></div>
                 </div>
             </div>
         </div>

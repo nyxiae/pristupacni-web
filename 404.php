@@ -1,0 +1,39 @@
+<?php
+include ("admin/class/Database.php"); 
+include ("admin/class/Stranica.php"); 
+include ("admin/class/Projekt.php"); 
+
+$database = new Database();
+$con = $database->connect();
+
+$stranica = new Stranica($con); 
+$data = array(); 
+$result = $stranica->read_single(1); 
+while($row = mysqli_fetch_assoc($result)){
+    $data = $row;
+}
+
+$projekt = new Projekt($con); 
+$projekti_data = array(); 
+$result = $projekt->read_frontend(); 
+while($row = mysqli_fetch_assoc($result)){
+    $projekti_data[] = $row;
+}
+
+?>
+
+<?php include("elements/head.php"); ?>
+<!-- Navigation -->
+<?php include("elements/header.php"); ?>
+
+
+    <div class="container str-box">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="naslov">Pogreška - Stranica ne postoji</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+<?php include("elements/footer.php"); ?>

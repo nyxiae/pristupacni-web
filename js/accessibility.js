@@ -23,7 +23,7 @@ function getCookie(name) {
 
 // Funkcija za brisanje kolačića
 function eraseCookie(name) {
-    document.cookie = name + '=; Max-Age=-99999999;';
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 }
 
 $(document).ready(function () {
@@ -70,14 +70,21 @@ $(document).ready(function () {
 
         if (greyImg === 'true') {
             $('img').addClass('greyscale');
+        }else{
+            $('img').removeClass('greyscale');
         }
+
 
         if (highlightLink === 'true') {
             $('a').addClass('highlight');
+        }else{
+            $('a').removeClass('highlight');
         }
 
         if (underlineLink === 'true') {
             $('a').addClass('underline');
+        }else{
+            $('a').removeClass('underline');
         }
 
         if (fontFamily) {
@@ -193,7 +200,7 @@ $(document).ready(function () {
     // Event handler za resetiranje stilova na početne vrijednosti
     $('#resetStyles').on('click', function () {
         $('body, header, footer, div, p, a, img, :header').removeClass('black-yellow blue-yellow green-black red-black greyscale underline highlight font-omotype font-roboto');
-
+        console.log("briši kolačiće")
         // Vraćanje početnih veličina fonta
         $('p').css('font-size', initialFontSizes['p']);
         $('h1').css('font-size', initialFontSizes['h1']);
@@ -204,8 +211,11 @@ $(document).ready(function () {
         eraseCookie('fontSize'); // Uklanjanje spremljene veličine fonta iz kolačića
         eraseCookie('fontFamily');
         eraseCookie('greyImg'); // Uklanjanje spremljenog stanja sivih slika iz kolačića
+        greyImg=false;
         eraseCookie('highlightLink'); // Uklanjanje spremljenog stanja isticanja linkova iz kolačića
+        highlightLink=false;
         eraseCookie('underlineLink'); // Uklanjanje spremljenog stanja podcrtavanja linkova iz kolačića
+        underlineLink=false;
     });
 
 

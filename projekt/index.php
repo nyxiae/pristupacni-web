@@ -6,7 +6,7 @@ include ("../admin/class/Projekt.php");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-} else {
+}else {
     header('Location: ../index.php');
     exit();
 }

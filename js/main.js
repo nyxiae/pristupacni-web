@@ -1,11 +1,13 @@
 $(document).ready(function () {
 
     // VARIJABLE 
-    var currentPath = window.location.pathname.replace(/\/+$/, '');
+    var currentPath = window.location.pathname;
     let accessibility = $(".accessibility-container");
     let backToTopButton = $('#js-back-to-top');
     let body = $("body");
 
+    var pathSegments = currentPath.split('/').filter(segment => segment !== '');
+    var relevantPath = pathSegments.length > 1 ? pathSegments[1] + '/' : '/';
 
     // skriven gumb za povratak na početak web stranice 
     backToTopButton.hide();
@@ -43,16 +45,15 @@ $(document).ready(function () {
     $('#switchId').on('change', function () {
         var img = $('#headerImg');
         if ($(this).is(':checked')) {
-            img.attr('src', '/photo/header-img2.webp');
+            img.attr('src', 'photo/header-img2.webp');
             img.attr('alt', 'slika grada, noćna verzija');
         } else {
-            img.attr('src', '/photo/header-img.webp');
+            img.attr('src', 'photo/header-img.webp');
             img.attr('alt', 'slika grada, dnevna verzija');
         }
     });
     
     $('.js-toggle-password').on('click', function() {
-        console.log("Nee");
         var $passwordInput = $('input[name="lozinka"]');
         var $icon = $(this).find('i');
 
@@ -66,7 +67,11 @@ $(document).ready(function () {
     });
 
     $('.nav-link').each(function () {
-        if ($(this).attr('href') === currentPath) {
+        var linkPath = $(this).attr('href'); 
+        if(linkPath == "index.php"){
+            linkPath = "index.php/";
+        }
+        if (linkPath === relevantPath) {
             $(this).parent().addClass('active');
         } else {
             $(this).parent().removeClass('active');
