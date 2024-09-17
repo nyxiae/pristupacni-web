@@ -125,4 +125,34 @@ $(function() {
         $('#updateModal').modal('hide');
     });
 
+    function previewImage(event) {
+        const image = document.getElementById('createSlika').files[0];
+        const imagePreview = document.getElementById('imagePreview');
+    
+        if (image) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = "block";
+            }
+            reader.readAsDataURL(image);
+        } else {
+            imagePreview.style.display = "none";
+            imagePreview.src = "#";
+        }
+    }
+
+    function previewUpdateImage(event) {
+        const image = document.getElementById('updateSlika').files[0];
+        const imagePreview = document.getElementById('updateImagePreview');
+    
+        if (image) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+            }
+            reader.readAsDataURL(image);
+        }
+    }
+
 })

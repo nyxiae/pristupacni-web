@@ -3,7 +3,7 @@ $active_menu = isset($active_menu) ? $active_menu : "";
 
 $menu_items = array(
     'stranica' => array('stranica'),
-    'kompanija' => array('kompanija', 'ponuda'),
+    'kompanija' => array('kompanija', 'ponuda', 'uredaj'),
     'novost' => array('novost'),
     'projekt' => array('projekt'),
     'korisnik' => array('korisnik'),

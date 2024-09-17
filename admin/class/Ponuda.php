@@ -11,7 +11,14 @@ class Ponuda{
 	}
 
     public function read(){
-        $sql = "SELECT p.id_ponuda, p.naslov, k.naziv, s.naziv
+        $sql = "SELECT p.id_ponuda, p.naslov,
+                concat('<a href=\'/admin/view/uredaj/index.php?id_ponuda=',
+                    p.id_ponuda,
+                    '\'>stavke (',
+                    (select count(*) from uredaj where id_ponuda=p.id_ponuda and aktivan = 1),
+                    ')</a>') as uredaji,
+                    '',
+                k.naziv, s.naziv
                 FROM ponuda p 
                 JOIN kompanija k ON p.id_kompanija = k.id_kompanija
                 JOIN stranica s ON p.id_stranica = s.id_stranica
@@ -35,6 +42,20 @@ class Ponuda{
         $result = $stmt->get_result();
         return $result;    
     }
+
+    public function read_single_frontend($ponuda){
+
+        $sql = "SELECT k.naziv as kompanija, p.naslov, p.tekst 
+                FROM ponuda  p 
+                JOIN kompanija k on p.id_kompanija = k.id_kompanija 
+                WHERE p.aktivan = 1 AND p.id_ponuda = $ponuda";
+        
+        $stmt = $this->con->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;    
+    }
+
 
     public function read_single($id){
         $sql = "SELECT * FROM ponuda WHERE id_ponuda = ?";

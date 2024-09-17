@@ -37,7 +37,7 @@
             <button id="greyImg">Slike sivih tonova <i class="fa-solid fa-droplet-slash"></i></button>
         </div>
         <div class="bottom-border">
-            <button>Isključi svjetla <i class="fa-regular fa-lightbulb"></i></button>
+            <button id="turnOffLights">Isključi svjetla <i class="fa-regular fa-lightbulb"></i></button>
         </div>
         <div class="bottom-border">
             <button id="resetStyles">Vrati na početne postavke <i class="fa-solid fa-arrow-rotate-left"></i></button>

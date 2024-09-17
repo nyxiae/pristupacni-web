@@ -33,6 +33,7 @@ $(document).ready(function () {
     // Početne veličine fonta
     var initialFontSizes = {
         'p': '16px',
+        'a.nav-link': '24px',
         'h1': '32px',
         'h2': '36px',
         'h3': '24px'
@@ -46,6 +47,7 @@ $(document).ready(function () {
         var highlightLink = getCookie('highlightLink');
         var underlineLink = getCookie('underlineLink');
         var fontFamily= getCookie('fontFamily');
+        var darkMode = getCookie('darkMode');
 
         if (themeClass) {
             $('body, header, footer, div, p, a, img').not('.no-change, .no-change *').removeClass('black-yellow blue-yellow green-black red-black greyscale underline highlight');
@@ -57,6 +59,7 @@ $(document).ready(function () {
                 var fontSizeObj = JSON.parse(fontSize);
                 if (fontSizeObj && typeof fontSizeObj === 'object') {
                     $('p').css('font-size', fontSizeObj['p']);
+                    $('a.nav-link').css('font-size', fontSizeObj['a.nav-link']);
                     $('h1').css('font-size', fontSizeObj['h1']);
                     $('h2').css('font-size', fontSizeObj['h2']);
                     $('h3').css('font-size', fontSizeObj['h3']);
@@ -87,6 +90,12 @@ $(document).ready(function () {
             $('a').removeClass('underline');
         }
 
+        if (darkMode === 'true') {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+
         if (fontFamily) {
             $('body').removeClass('font-omotype font-roboto-slab').addClass(fontFamily);
             if (fontFamily === 'font-omotype') {
@@ -113,13 +122,14 @@ $(document).ready(function () {
 
     // Event handler za povećanje veličine fonta
     $('#increaseFontSize').on('click', function () {
-        $('p, h1, h2, h3').each(function () {
+        $('p, a.nav-link, h1, h2, h3').each(function () {
             var currentFontSize = parseInt($(this).css('font-size'));
             $(this).css('font-size', (currentFontSize + 2) + 'px');
         });
 
         var fontSizeObj = {
             'p': $('p').css('font-size'),
+            'a.nav-link': $('a.nav-link').css('font-size'),
             'h1': $('h1').css('font-size'),
             'h2': $('h2').css('font-size'),
             'h3': $('h3').css('font-size')
@@ -129,7 +139,7 @@ $(document).ready(function () {
 
     // Event handler za smanjivanje veličine fonta
     $('#decreaseFontSize').on('click', function () {
-        $('p, h1, h2, h3').each(function () {
+        $('p, a.nav-link, h1, h2, h3').each(function () {
             var currentFontSize = parseInt($(this).css('font-size'));
             if (currentFontSize > 16) {
                 $(this).css('font-size', (currentFontSize - 2) + 'px');
@@ -138,6 +148,7 @@ $(document).ready(function () {
 
         var fontSizeObj = {
             'p': $('p').css('font-size'),
+            'a.nav-link': $('a.nav-link').css('font-size'),
             'h1': $('h1').css('font-size'),
             'h2': $('h2').css('font-size'),
             'h3': $('h3').css('font-size')
@@ -148,6 +159,7 @@ $(document).ready(function () {
     //vraćanje početnih postavki fonta
     $('#resetFontSize').on('click', function () {
         $('p').css('font-size', initialFontSizes['p']);
+        $('a.nav-link').css('font-size', initialFontSizes['a.nav-link']);
         $('h1').css('font-size', initialFontSizes['h1']);
         $('h2').css('font-size', initialFontSizes['h2']);
         $('h3').css('font-size', initialFontSizes['h3']);
@@ -200,9 +212,9 @@ $(document).ready(function () {
     // Event handler za resetiranje stilova na početne vrijednosti
     $('#resetStyles').on('click', function () {
         $('body, header, footer, div, p, a, img, :header').removeClass('black-yellow blue-yellow green-black red-black greyscale underline highlight font-omotype font-roboto');
-        console.log("briši kolačiće")
         // Vraćanje početnih veličina fonta
         $('p').css('font-size', initialFontSizes['p']);
+        $('a.nav-link').css('font-size', initialFontSizes['a.nav-link']);
         $('h1').css('font-size', initialFontSizes['h1']);
         $('h2').css('font-size', initialFontSizes['h2']);
         $('h3').css('font-size', initialFontSizes['h3']);
@@ -216,6 +228,8 @@ $(document).ready(function () {
         highlightLink=false;
         eraseCookie('underlineLink'); // Uklanjanje spremljenog stanja podcrtavanja linkova iz kolačića
         underlineLink=false;
+        disableDarkMode(); // Ensure dark mode is turned off
+        eraseCookie('darkMode'); // Remove dark mode cookie
     });
 
 
@@ -233,5 +247,31 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('#turnOffLights').on('click', function () {
+        if ($('body').css('background') === 'rgba(0, 0, 0, 0.83)') {
+            disableDarkMode();
+            setCookie('darkMode', 'false', 7);
+        } else {
+            enableDarkMode();
+            setCookie('darkMode', 'true', 7);
+        }
+    });
+
+     // Function to enable dark mode
+     function enableDarkMode() {
+        $('body').css('background', 'rgba(0, 0, 0, 0.83)');
+        $('.box').css('background', 'white');
+        $('#textInput').css('background', 'white');
+        $('.naslov').css('color', '#ee1c4e');
+    }
+
+    // Function to disable dark mode
+    function disableDarkMode() {
+        $('body').css('background', '');
+        $('.box').css('background', '');
+        $('#textInput').css('background', '');
+        $('.naslov').css('color', '');
+    }
     
 });
